@@ -4,7 +4,7 @@
     'text' => 'Example Text',
     'image' => 'Image placeholder',
 ])
-<div class="aspect-square overflow-hidden my-4 mx-4 border border-2 shadow-lg rounded-xl p-2 relative group">
+<div class="aspect-square overflow-hidden my-4 mx-4 border-2 shadow-lg rounded-xl p-2 relative group">
     {{-- the card itself --}}
     {{-- The image is bigger therefore the margin is not applied correctly on the bottom --}}
     @if ($image)

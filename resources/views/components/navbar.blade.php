@@ -8,7 +8,7 @@
                 <div class="hidden md:flex space-x-5">
                     <a href="{{ route('home') }}" class="text-pearl-800 hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-body {{ request()->routeIs('home') ? 'text-olive-600 font-semibold bg-pearl-100' : '' }}">{{ __('common.Home') }}</a>
                     <a href="{{ route('about') }}" class="text-pearl-800 hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-body">{{ __('common.About') }}</a>
-                    <a href="#" class="text-pearl-800 hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-body">{{ __('common.Contact') }}</a>
+                    <a href="{{ route('contact') }}" class="text-pearl-800 hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-body">{{ __('common.Contact') }}</a>
                 </div>
             </div>
 
