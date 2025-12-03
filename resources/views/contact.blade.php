@@ -83,4 +83,5 @@
         </div>
     </section>
 
+    <x-footer/>
 </body>
