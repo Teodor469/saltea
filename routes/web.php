@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Product\AddProduct;
+use App\Livewire\Product\EditProduct;
 use App\Livewire\AddUser;
 use App\Livewire\Product\ListProduct;
 use App\Livewire\Settings\Appearance;
@@ -44,6 +45,7 @@ Route::middleware(['admin', 'auth', 'verified'])->group(function() {
     
     Route::get('admin/add-product', AddProduct::class)->name('admin.add_product');
     Route::get('admin/list-products', ListProduct::class)->name('admin.list_products');
+    Route::get('admin/edit-product/{product}', EditProduct::class)->name('admin.edit_product');
 
     Route::get('admin/add-user', AddUser::class)->name('admin.add_user');
     Route::get('admin/list-users', AddUser::class)->name('admin.list_users');

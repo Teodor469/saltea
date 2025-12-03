@@ -78,33 +78,8 @@ class AddProduct extends Component
         $this->reset(['title', 'images', 'price', 'description']);
         $this->ingredients = [''];
         $this->benefits = [''];
-        //? Maybe return to the same page?
     }
 
-    public function show()
-    {
-        //?Is it still Id route binding like it was in Laravel?
-    }
-
-    public function edit()
-    {
-        //TODO Open an edit form for an already created product. (This is going to be where they are being listed)
-    }
-
-    public function update()
-    {
-        //! I will have to use another set of rules for this validation.
-    }
-
-    public function sold()
-    {
-        //! This will keep track of the sold items. My idea is to make it like a soft delete
-    }
-
-    public function delete()
-    {
-        //!Normal deleting of a record
-    }
     public function render()
     {
         return view('livewire.product.add-product');
