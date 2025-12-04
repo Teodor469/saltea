@@ -60,13 +60,13 @@
 
             <!-- Ingredients -->
             <div class="mb-4">
-                <label class="block text-sm font-medium mb-2">Съставки</label>
+                <label class="block text-sm font-medium mb-2">Ingredients</label>
                 
                 @foreach($ingredients as $index => $ingredient)
                     <div class="flex gap-2 mb-2">
                         <input type="text" 
                                wire:model="ingredients.{{ $index }}"
-                               placeholder="Напр: Морска сол"
+                               placeholder="Eg. Sea Salt"
                                class="flex-1 border rounded px-3 py-2">
                         
                         @if($index > 0)
@@ -85,19 +85,19 @@
                 <button type="button"
                         wire:click="addIngredient"
                         class="mt-2 text-blue-600 hover:text-blue-800">
-                    + Добави съставка
+                    + Add ingredient
                 </button>
             </div>
 
             <!-- Benefits -->
             <div class="mb-4">
-                <label class="block text-sm font-medium mb-2">Ползи</label>
+                <label class="block text-sm font-medium mb-2">Benefits</label>
                 
                 @foreach($benefits as $index => $benefit)
                     <div class="flex gap-2 mb-2">
                         <input type="text" 
                                wire:model="benefits.{{ $index }}"
-                               placeholder="Напр: Релаксира мускулите"
+                               placeholder="Eg. Relaxes Muscles"
                                class="flex-1 border rounded px-3 py-2">
                         
                         @if($index > 0)
@@ -116,7 +116,7 @@
                 <button type="button"
                         wire:click="addBenefit"
                         class="mt-2 text-blue-600 hover:text-blue-800">
-                    + Добави полза
+                    + Add benefit
                 </button>
             </div>
 
