@@ -7,21 +7,35 @@
         {{-- This will be the main container of the listings --}}
         <div class="flex justify-end">
             {{-- This will be the search bar --}}
-            <input type="text" placeholder="Search..." class="border border-neutral-200 dark:border-neutral-700 p-2 rounded-lg">
+            <input type="text" placeholder="Search..."
+                class="border border-neutral-200 dark:border-neutral-700 p-2 rounded-lg">
         </div>
 
         <div class="flex flex-wrap gap-6 mt-4">
             {{-- The filters shall be situated here --}}
-            <input type="text" placeholder="Filter ID" class="border border-neutral-200 dark:border-neutral-700 p-4 rounded-lg">
-            <input type="text" placeholder="Filter Name" class="border border-neutral-200 dark:border-neutral-700 p-4 rounded-lg">
-            <input type="text" placeholder="Filter Price" class="border border-neutral-200 dark:border-neutral-700 p-4 rounded-lg">
+            <input type="text" placeholder="Filter ID"
+                class="border border-neutral-200 dark:border-neutral-700 p-4 rounded-lg">
+            <input type="text" placeholder="Filter Name"
+                class="border border-neutral-200 dark:border-neutral-700 p-4 rounded-lg">
+            <input type="text" placeholder="Filter Price"
+                class="border border-neutral-200 dark:border-neutral-700 p-4 rounded-lg">
             {{-- !Don't forget to add ascending and descending for created_at --}}
         </div>
 
         <div class="my-6 space-y-4">
             {{-- The listing with all the different buttons bells and whistles --}}
+            <div class="bg-zinc-50 dark:bg-zinc-800 p-4 rounded-lg">
+                <div class="grid grid-cols-12 gap-4 items-center">
+                    <div class="col-span-1 text-center">Product</div>
+                    <div class="col-span-2 text-center">Title</div>
+                    <div class="col-span-2 text-center">Description</div>
+                    <div class="col-span-1 text-center">Price</div>
+                    <div class="col-span-3 text-center">Ingredients</div>
+                    <div class="col-span-3 text-center">Actions</div>
+                </div>
+            </div>
             @foreach ($products as $product)
-                <x-listing-card wire:key='"listing-{{ $product->id }}' :product="$product"/>
+                <x-listing-card wire:key='"listing-{{ $product->id }}' :product="$product" />
             @endforeach
         </div>
 
