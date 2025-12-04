@@ -2,11 +2,14 @@
 
 namespace App\Livewire\Product;
 
+use App\ManageProductArrays;
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EditProduct extends Component
 {
+    use WithFileUploads, ManageProductArrays;
     public Product $product;
     public $title;
     public $price;
@@ -60,7 +63,7 @@ class EditProduct extends Component
         ]);
 
         session()->flash('success', 'Product Created Successfully!');
-        $this->reset(['title', 'images', 'price', 'description']);
+        $this->reset(['title', 'images', 'price', 'description']); //? Should I actually reset those? Would they automatically update after or before the reset?
         $this->ingredients = $this->product->ingredients;
         $this->benefits = $this->product->benefits;
     }

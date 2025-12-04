@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Product;
 
+use App\ManageProductArrays;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use function Livewire\store;
 
 class AddProduct extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, ManageProductArrays;
 
     public $title;
     public $price;
@@ -26,28 +26,6 @@ class AddProduct extends Component
             'ingredients.*' => 'required|string|max:255',
             'benefits.*' => 'required|string|max:255',
         ];
-
-    public function addIngredient()
-    {
-        $this->ingredients[] = '';
-    }
-
-    public function removeIngredient($index)
-    {
-        unset($this->ingredients[$index]);
-        $this->ingredients = array_values($this->ingredients);
-    }
-
-    public function addBenefit()
-    {
-        $this->benefits[] = '';
-    }
-
-    public function removeBenefit($index)
-    {
-        unset($this->benefits[$index]);
-        $this->benefits = array_values($this->benefits);
-    }
 
     public function store()
     {

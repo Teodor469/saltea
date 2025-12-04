@@ -10,6 +10,9 @@
     'href' => '#'
 ])
 
+{{-- !Multiple images view is not support create carousel --}}
+{{-- TODO create carousel for multiple images --}}
+
 <div x-data="{ modalOpen: false }" class="group">
     <!-- Product Image -->
     <div class="aspect-square overflow-hidden rounded-2xl mb-4">
