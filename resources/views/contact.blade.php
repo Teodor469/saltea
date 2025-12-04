@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact - {{ config('app.name', 'Saltea') }}</title>
+    <title>{{ __('contact.title') }} - {{ config('app.name', 'Saltea') }}</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,9 +26,9 @@
     <!-- Hero Section -->
     <section class="bg-ivory-100 py-12 lg:py-16">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h1 class="font-accent text-4xl sm:text-5xl lg:text-6xl text-pearl-900 mb-4">Claim Your Calm.</h1>
+            <h1 class="font-accent text-4xl sm:text-5xl lg:text-6xl text-pearl-900 mb-4">{{ __('contact.hero_title') }}</h1>
             <p class="font-info text-lg lg:text-xl text-pearl-700 max-w-2xl mx-auto">
-                Ready to bring tranquility into your daily routine? Let us know which products speak to you.
+                {{ __('contact.hero_description') }}
             </p>
         </div>
     </section>
@@ -39,44 +39,44 @@
                 <form action="" class="flex flex-col w-full justify-center gap-4 items-center">
                     @csrf
                     <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">Choose Product</label>
+                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.choose_product') }}</label>
                         <select name="product" id="product" class="border-2 w-full px-3 py-2">
-                            <option value="">Choose a product...</option>
-                            <option value="salt1">Bath Salt - Lavender</option>
-                            <option value="salt2">Bath Salt - Eucalyptus</option>
-                            <option value="salt3">Bath Salt - Rose</option>
-                            <option value="salt4">Bath Salt - Mint</option>
+                            <option value="">{{ __('contact.choose_product_placeholder') }}</option>
+                            <option value="salt1">{{ __('contact.product_lavender') }}</option>
+                            <option value="salt2">{{ __('contact.product_eucalyptus') }}</option>
+                            <option value="salt3">{{ __('contact.product_rose') }}</option>
+                            <option value="salt4">{{ __('contact.product_mint') }}</option>
                         </select>
                     </div>
                     <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">First Name *</label>
-                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="Your Name..." required>
+                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.first_name') }} {{ __('contact.required_indicator') }}</label>
+                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.first_name_placeholder') }}" required>
                     </div>
                     <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">Last Name *</label>
-                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="Your Last Name..."
+                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.last_name') }} {{ __('contact.required_indicator') }}</label>
+                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.last_name_placeholder') }}"
                             required>
                     </div>
                     <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">Email *</label>
-                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="Your Email..." required>
+                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.email') }} {{ __('contact.required_indicator') }}</label>
+                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.email_placeholder') }}" required>
                     </div>
                     <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">Phone Number *</label>
-                        <input type="tel" class="border-2 w-full px-3 py-2" placeholder="+359 XX XXX XXXX" required>
+                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.phone_number') }} {{ __('contact.required_indicator') }}</label>
+                        <input type="tel" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.phone_placeholder') }}" required>
                     </div>
                     <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">Address *</label>
-                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="Your Address..." required>
+                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.address') }} {{ __('contact.required_indicator') }}</label>
+                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.address_placeholder') }}" required>
                     </div>
                     <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">Additional Information</label>
+                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.additional_information') }}</label>
                         <textarea name="info" id="info" cols="30" rows="2" class="border-2 w-full px-3 py-2"
-                            placeholder="Additional Info For Delivery"></textarea>
+                            placeholder="{{ __('contact.additional_info_placeholder') }}"></textarea>
                     </div>
                     <button type="submit"
                         class="w-full sm:w-2/3 lg:w-1/2 h-12 bg-pink-500 hover:bg-pink-600 text-white font-medium rounded-lg mt-4">
-                        Submit Order
+                        {{ __('contact.submit_order') }}
                     </button>
                 </form>
             </div>
