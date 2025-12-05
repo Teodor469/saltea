@@ -9,7 +9,7 @@ class ProductShowcase extends Component
 {
     public function render()
     {
-        $products = Product::all();
+        $products = Product::orderBy('updated_at', 'desc')->paginate(4);
         return view('livewire.product-showcase.product-showcase', [
             'products' => $products
         ]);
