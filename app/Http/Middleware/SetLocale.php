@@ -18,18 +18,8 @@ class SetLocale
         $sessionLocale = session('locale');
         $currentLocale = App::getLocale();
         
-        Log::debug('SetLocale middleware executing', [
-            'session_locale' => $sessionLocale,
-            'current_locale_before' => $currentLocale,
-            'has_session_locale' => session()->has('locale')
-        ]);
-        
         if (session()->has('locale')) {
             App::setLocale(session('locale'));
-            Log::debug('Locale set from session', [
-                'new_locale' => App::getLocale(),
-                'session_locale' => session('locale')
-            ]);
         }
 
         return $next($request);

@@ -3,6 +3,7 @@
 namespace App\Livewire\Product;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 
 class ListProduct extends Component
@@ -25,6 +26,11 @@ class ListProduct extends Component
         if (!$product) {
             session()->flash('failure', 'Product has not been found');
         }
+
+        foreach($product->images as $image) {
+            File::delete(public_path('storage/' . $image));
+        }
+
         $product->delete();
 
         session()->flash('success', 'Product deleted successfully!');

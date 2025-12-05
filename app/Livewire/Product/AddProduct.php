@@ -21,7 +21,7 @@ class AddProduct extends Component
     protected $rules = [
             'title' => 'required|min:3|max:255',
             'images.*' => 'required|image|max:4096',
-            'price' => 'required|numeric|between:0,99.9999',
+            'price' => 'required|numeric|between:0,999.9999',
             'description' => 'required|string|max:1000',
             'ingredients.*' => 'required|string|max:255',
             'benefits.*' => 'required|string|max:255',

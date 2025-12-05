@@ -77,13 +77,21 @@
 
             <div class="flex flex-col w-full gap-2">
                 <label for="images" class="font-semibold text-sm">Product Image</label>
+                {{-- !I need to fetch existingImages --}}
                 @if ($product->images && count($product->images) > 0)
                     <div class="flex gap-2">
-                        @foreach ($product->images as $image)
-                            <img src="{{ asset('storage/' . $image) }}" alt="Product Image" class="w-24 h-24 object-cover rounded">
+                        @foreach ($existingImages as $image)
+                            <div class="relative">
+                                <img src="{{ asset('storage/' . $image) }}" alt="Product Image" class="w-24 h-24 object-cover rounded">
+                                <button 
+                                wire:click='deleteImage("{{ $image }}")'
+                                class="absolute top-1 right-1 w-4 h-4 bg-red-500 rounded-full text-white border border-neutral-200 dark:border-neutral-700 flex items-center justify-center">
+                                x</button>
+                            </div>
                         @endforeach
                     </div>
                 @endif
+                {{-- TODO then replace them here with this. --}}
                 <input type="file"
                 wire:model='images'
                 accept="image/*"
@@ -93,6 +101,7 @@
             </div>
 
             <button
+            type="submit"
                 class="border border-neutral-200 dark:border-neutral-600 self-end px-6 py-3 rounded-lg text-yellow-700 dark:text-yellow-100 
             hover:text-yellow-800 dark:hover:text-yellow-300 hover:scale-110 transition-transform">
                 Update
