@@ -81,6 +81,7 @@ class EditProduct extends Component
             session()->flash('fail', 'At least one image is required.');
             return;
         }
+        
         if($image && in_array($image, $this->existingImages)) {
             File::delete(public_path('storage/' . $image));
 

@@ -5,7 +5,7 @@
     </div>
 @endif
 
-@if(session('failure') || session('fail'))
+@if(session('fail'))
     <div class="text-red-700 border border-red-400 bg-red-50 dark:bg-red-900 px-3 py-3 rounded m-4">
         {{ session('fail') }}
     </div>

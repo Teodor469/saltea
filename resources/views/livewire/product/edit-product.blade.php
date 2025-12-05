@@ -89,6 +89,7 @@
                             <div class="relative">
                                 <img src="{{ asset('storage/' . $image) }}" alt="Product Image" class="w-24 h-24 object-cover rounded">
                                 <button 
+                                type="button"
                                 wire:click='deleteImage("{{ $image }}")'
                                 class="absolute top-1 right-1 w-4 h-4 bg-red-500 rounded-full text-white border border-neutral-200 dark:border-neutral-700 flex items-center justify-center">
                                 x</button>
