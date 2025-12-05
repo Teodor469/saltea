@@ -41,6 +41,9 @@
                     <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
                         <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.choose_product') }}</label>
                         <select name="product" id="product" class="border-2 w-full px-3 py-2">
+                            {{-- TODO Make that a modal with the list of products and checkboxes --}}
+                            {{-- *Each checkbox will automatically fill in the name of the product --}}
+                            {{-- *Upon form submission all this data will be sent via email --}}
                             <option value="">{{ __('contact.choose_product_placeholder') }}</option>
                             <option value="salt1">{{ __('contact.product_lavender') }}</option>
                             <option value="salt2">{{ __('contact.product_eucalyptus') }}</option>
