@@ -1,4 +1,9 @@
 <div class="">
+    @if (session()->has('success'))
+        <x-flash-message/>
+    @elseif(session()->has('fail'))
+        <x-flash-message/>
+    @endif
     <h1 class="font-body text-lg lg:text-2xl sm:text-md font-semibold text-gray-900 dark:text-white">
         Edit Product
     </h1>

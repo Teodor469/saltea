@@ -70,13 +70,17 @@ class EditProduct extends Component
             'benefits' => array_values($benefits),
         ]);
 
-        session()->flash('success', 'Product Created Successfully!');
+        session()->flash('success', 'Product Updated Successfully!');
         $this->ingredients = $this->product->ingredients;
         $this->benefits = $this->product->benefits;
     }
 
     public function deleteImage($image)
     {
+        if (count($this->existingImages) <= 1) {
+            session()->flash('fail', 'At least one image is required.');
+            return;
+        }
         if($image && in_array($image, $this->existingImages)) {
             File::delete(public_path('storage/' . $image));
 

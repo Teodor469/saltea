@@ -24,7 +24,7 @@ class ListProduct extends Component
         $product = Product::find($id);
 
         if (!$product) {
-            session()->flash('failure', 'Product has not been found');
+            session()->flash('fail', 'Product has not been found');
         }
 
         foreach($product->images as $image) {
@@ -38,7 +38,7 @@ class ListProduct extends Component
 
     public function render()
     {
-        $products = Product::paginate(5);
+        $products = Product::orderBy('created_at', 'desc')->paginate(5);
         return view('livewire.product.list-product', [
             'products' => $products,
         ]);
