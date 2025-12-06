@@ -12,27 +12,29 @@
         @csrf
         <div
             class="bg-white dark:bg-zinc-900 flex flex-col justify-center items-center gap-4 border border-neutral-200 dark:border-neutral-700 rounded-xl p-6">
-            <div class="flex flex-col w-full gap-2">
-                <label for="name" class="font-semibold text-sm">Product Name</label>
-                <input type="text"
-                    class="border border-neutral-200 dark:border-neutral-700 rounded-lg bg-gray-50 dark:bg-zinc-800 px-4 py-3"
-                    wire:model='title'>
-            </div>
+            <x-form-input 
+                label="Product Name" 
+                wireModel="title" 
+                id="name" 
+                required 
+            />
 
-            <div class="flex flex-col w-full gap-2">
-                <label name="description" id="description" class="font-semibold text-sm">Description</label>
-                <textarea type="text"
-                    class="border border-neutral-200 dark:border-neutral-700 rounded-lg bg-gray-50 dark:bg-zinc-800 px-4 py-3"
-                    wire:model='description'>
-                </textarea>
-            </div>
+            <x-form-input 
+                label="Description" 
+                type="textarea" 
+                wireModel="description" 
+                id="description" 
+                rows="3"
+            />
 
-            <div class="flex flex-col w-full gap-2">
-                <label for="price" class="font-semibold text-sm">Price</label>
-                <input type="text"
-                    class="border border-neutral-200 dark:border-neutral-700 rounded-lg bg-gray-50 dark:bg-zinc-800 px-4 py-3"
-                    wire:model='price'>
-            </div>
+            <x-form-input 
+                label="Price" 
+                type="number" 
+                wireModel="price" 
+                id="price" 
+                step="0.01"
+                min="0"
+            />
 
             <div class="flex flex-col w-full gap-2">
                 <label for="ingredients" class="font-semibold text-sm">Ingredients</label>
@@ -80,12 +82,17 @@
                 </button>
             </div>
 
-            <div class="flex flex-col w-full gap-2">
-                <label for="images" class="font-semibold text-sm">Product Image</label>
+            <x-form-input 
+                label="Product Image" 
+                type="file" 
+                wireModel="images" 
+                id="images"
+                accept="image/*"
+            >
                 @if ($product->images && count($product->images) > 0)
-                    <div class="flex gap-2">
+                    <div class="flex gap-2 mb-3">
                         @foreach ($existingImages as $index => $image)
-                            <div class="relative" wire:key='{{ $index }}''>
+                            <div class="relative" wire:key='{{ $index }}'>
                                 <img src="{{ asset('storage/' . $image) }}" alt="Product Image" class="w-24 h-24 object-cover rounded">
                                 <button 
                                 type="button"
@@ -96,14 +103,8 @@
                         @endforeach
                     </div>
                 @endif
-                {{-- TODO then replace them here with this. --}}
-                <input type="file"
-                wire:model='images'
-                accept="image/*"
-                class="border border-neutral-200 dark:border-neutral-700 rounded-lg bg-gray-50 dark:bg-zinc-800 px-4 py-3">
                 <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Upload a product image (JPG, PNG, max 2MB)</p>
-                @error('image') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-            </div>
+            </x-form-input>
 
             <button
             type="submit"

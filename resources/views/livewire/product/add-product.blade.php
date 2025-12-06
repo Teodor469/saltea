@@ -8,55 +8,34 @@
     
     <div class="bg-white dark:bg-zinc-900 rounded-xl border border-neutral-200 dark:border-neutral-700 p-6">
         <form wire:submit.prevent="store" class="space-y-6">
-            <!-- Product Name -->
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
-                    Product Name <span class="text-red-500">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="title" 
-                    wire:model="title"
-                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-zinc-800 px-4 py-3 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-                    placeholder="Enter product name"
-                    required
-                >
-                @error('title') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-            </div>
+            <x-form-input 
+                label="Product Name" 
+                wireModel="title" 
+                id="title" 
+                placeholder="Enter product name"
+                required 
+            />
 
-            <!-- Description -->
-            <div>
-                <label for="description" class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
-                    Description <span class="text-red-500">*</span>
-                </label>
-                <textarea 
-                    id="description" 
-                    wire:model="description"
-                    rows="4"
-                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-zinc-800 px-4 py-3 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-                    placeholder="Enter detailed description"
-                    required
-                ></textarea>
-                @error('description') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-            </div>
+            <x-form-input 
+                label="Description" 
+                type="textarea" 
+                wireModel="description" 
+                id="description" 
+                rows="4"
+                placeholder="Enter detailed description"
+                required 
+            />
 
-            <!-- Price -->
-            <div>
-                <label for="price" class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
-                    Price (лв.) <span class="text-red-500">*</span>
-                </label>
-                <input 
-                    type="number" 
-                    id="price" 
-                    wire:model="price"
-                    step="0.01"
-                    min="0"
-                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-zinc-800 px-4 py-3 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-                    placeholder="0.00"
-                    required
-                >
-                @error('price') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-            </div>
+            <x-form-input 
+                label="Price (лв.)" 
+                type="number" 
+                wireModel="price" 
+                id="price" 
+                step="0.01"
+                min="0"
+                placeholder="0.00"
+                required 
+            />
 
             <!-- Ingredients -->
             <div class="mb-4">
@@ -120,31 +99,24 @@
                 </button>
             </div>
 
-            <!-- Product Image -->
-            <div>
-                <label for="image" class="block text-sm font-medium text-gray-900 dark:text-white mb-2">
-                    Product Image <span class="text-red-500">*</span>
-                </label>
-                <input 
-                    type="file" 
-                    id="image" 
-                    wire:model="images"
-                    accept="image/*"
-                    class="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-zinc-800 px-4 py-3 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-blue-500"
-                    required
-                >
-                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Upload a product image (JPG, PNG, max 2MB)</p>
-                @error('image') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
-                
+            <x-form-input 
+                label="Product Image" 
+                type="file" 
+                wireModel="images" 
+                id="image"
+                accept="image/*"
+                required
+            >
                 @if ($images)
-                    <div class="mt-4">
+                    <div class="mt-4 mb-3">
                         @foreach($images as $image)
                             <img src="{{ $image->temporaryUrl() }}" 
                                  class="h-24 w-24 object-cover rounded">
                         @endforeach
                     </div>
                 @endif
-            </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Upload a product image (JPG, PNG, max 2MB)</p>
+            </x-form-input>
 
             <!-- Submit Button -->
             <div class="flex justify-end space-x-4 pt-4">

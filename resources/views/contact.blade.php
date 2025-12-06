@@ -28,32 +28,56 @@
                             <option value="salt4">{{ __('contact.product_mint') }}</option>
                         </select>
                     </div>
-                    <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.first_name') }} {{ __('contact.required_indicator') }}</label>
-                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.first_name_placeholder') }}" required>
-                    </div>
-                    <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.last_name') }} {{ __('contact.required_indicator') }}</label>
-                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.last_name_placeholder') }}"
-                            required>
-                    </div>
-                    <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.email') }} {{ __('contact.required_indicator') }}</label>
-                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.email_placeholder') }}" required>
-                    </div>
-                    <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.phone_number') }} {{ __('contact.required_indicator') }}</label>
-                        <input type="tel" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.phone_placeholder') }}" required>
-                    </div>
-                    <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.address') }} {{ __('contact.required_indicator') }}</label>
-                        <input type="text" class="border-2 w-full px-3 py-2" placeholder="{{ __('contact.address_placeholder') }}" required>
-                    </div>
-                    <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
-                        <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.additional_information') }}</label>
-                        <textarea name="info" id="info" cols="30" rows="2" class="border-2 w-full px-3 py-2"
-                            placeholder="{{ __('contact.additional_info_placeholder') }}"></textarea>
-                    </div>
+                    <x-form-input 
+                        :label="__('contact.first_name') . ' ' . __('contact.required_indicator')"
+                        type="text"
+                        :placeholder="__('contact.first_name_placeholder')"
+                        containerClass="w-2/3 px-3 py-2"
+                        class="border-2 px-3 py-2"
+                        required
+                    />
+                    <x-form-input 
+                        :label="__('contact.last_name') . ' ' . __('contact.required_indicator')"
+                        type="text"
+                        :placeholder="__('contact.last_name_placeholder')"
+                        containerClass="w-2/3 px-3 py-2"
+                        class="border-2 px-3 py-2"
+                        required
+                    />
+                    <x-form-input 
+                        :label="__('contact.email') . ' ' . __('contact.required_indicator')"
+                        type="email"
+                        :placeholder="__('contact.email_placeholder')"
+                        containerClass="w-2/3 px-3 py-2"
+                        class="border-2 px-3 py-2"
+                        required
+                    />
+                    <x-form-input 
+                        :label="__('contact.phone_number') . ' ' . __('contact.required_indicator')"
+                        type="tel"
+                        :placeholder="__('contact.phone_placeholder')"
+                        containerClass="w-2/3 px-3 py-2"
+                        class="border-2 px-3 py-2"
+                        required
+                    />
+                    <x-form-input 
+                        :label="__('contact.address') . ' ' . __('contact.required_indicator')"
+                        type="text"
+                        :placeholder="__('contact.address_placeholder')"
+                        containerClass="w-2/3 px-3 py-2"
+                        class="border-2 px-3 py-2"
+                        required
+                    />
+                    <x-form-input 
+                        :label="__('contact.additional_information')"
+                        type="textarea"
+                        name="info"
+                        id="info"
+                        rows="2"
+                        :placeholder="__('contact.additional_info_placeholder')"
+                        containerClass="w-2/3 px-3 py-2"
+                        class="border-2 px-3 py-2"
+                    />
                     <button type="submit"
                         class="w-full sm:w-2/3 lg:w-1/2 h-12 bg-pink-500 hover:bg-pink-600 text-white font-medium rounded-lg mt-4">
                         {{ __('contact.submit_order') }}
