@@ -37,7 +37,7 @@
             <div class="flex flex-col w-full gap-2">
                 <label for="ingredients" class="font-semibold text-sm">Ingredients</label>
                 @foreach ($ingredients as $index => $ingredient)
-                    <div class="flex gap-2 mb-2">
+                    <div class="flex gap-2 mb-2" wire:key='{{ $index }}'>
                         <input type="text"
                             class="w-full border border-neutral-200 dark:border-neutral-700 rounded-lg bg-gray-50 dark:bg-zinc-800 px-4 py-3"
                             wire:model='ingredients.{{ $index }}'>
@@ -60,7 +60,7 @@
             <div class="flex flex-col w-full gap-2">
                 <label for="benefits" class="font-semibold text-sm">Benefits</label>
                 @foreach ($benefits as $index => $benefit)
-                    <div class="flex gap-2 mb-2">
+                    <div class="flex gap-2 mb-2" wire:key='{{ $index }}'>
                         <input type="text"
                             class="w-full border border-neutral-200 dark:border-neutral-700 rounded-lg bg-gray-50 dark:bg-zinc-800 px-4 py-3"
                             wire:model='benefits.{{ $index }}'>
@@ -82,11 +82,10 @@
 
             <div class="flex flex-col w-full gap-2">
                 <label for="images" class="font-semibold text-sm">Product Image</label>
-                {{-- !I need to fetch existingImages --}}
                 @if ($product->images && count($product->images) > 0)
                     <div class="flex gap-2">
-                        @foreach ($existingImages as $image)
-                            <div class="relative">
+                        @foreach ($existingImages as $index => $image)
+                            <div class="relative" wire:key='{{ $index }}''>
                                 <img src="{{ asset('storage/' . $image) }}" alt="Product Image" class="w-24 h-24 object-cover rounded">
                                 <button 
                                 type="button"

@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About - {{ config('app.name', 'Saltea') }}</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Poiret+One:wght@400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('styles')
-    
-    <!-- Ensure Alpine.js is loaded -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-</head>
-<body class="antialiased">
+<x-layouts.public title="About - {{ config('app.name', 'Saltea') }}">
     <div>
-        <x-navbar/>
         <section class="bg-ivory-100 py-8 lg:py-16 px-4">
             <div class="flex flex-col lg:flex-row mt-4 max-w-6xl mx-auto gap-6 justify-start">
                 {{-- Image --}}
@@ -73,6 +54,4 @@
 
         </div>
     </div>
-    <x-footer/>
-</body>
-</html>
+</x-layouts.public>
