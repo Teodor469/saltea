@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="bg-ivory-50 shadow-lg border-b border-pearl-200">
+<nav class="bg-ivory-50 shadow-lg border-b border-pearl-200" x-data="{ mobileMenuOpen: false }" @resize.window="if (window.innerWidth >= 768) mobileMenuOpen = false">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center h-16">
             <!-- Left side navigation links -->
@@ -46,7 +46,9 @@
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-pearl-800 hover:text-olive-600 focus:outline-none focus:text-olive-600 transition-colors" aria-label="Toggle mobile menu">
+                    <button 
+                        @click="mobileMenuOpen = !mobileMenuOpen"
+                        id="mobile-menu-button" class="text-pearl-800 hover:text-olive-600 focus:outline-none focus:text-olive-600 transition-colors" aria-label="Toggle mobile menu">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -57,66 +59,55 @@
     </div>
 
     <!-- Mobile menu (hidden by default) -->
-    <div id="mobile-menu" class="md:hidden hidden bg-ivory-50 border-t border-pearl-200">
-        <div class="px-4 pt-2 pb-3 space-y-1">
-            <a href="{{ route('home') }}" class="block text-pearl-800 hover:text-olive-600 hover:bg-pearl-100 px-3 py-2 rounded-md text-base font-medium transition-colors font-body {{ request()->routeIs('home') ? 'text-olive-600 bg-pearl-200' : '' }}">Home</a>
-            <a href="#" class="block text-pearl-800 hover:text-olive-600 hover:bg-pearl-100 px-3 py-2 rounded-md text-base font-medium transition-colors font-body">Shop</a>
-            <a href="#" class="block text-pearl-800 hover:text-olive-600 hover:bg-pearl-100 px-3 py-2 rounded-md text-base font-medium transition-colors font-body">Categories</a>
-            <a href="#" class="block text-pearl-800 hover:text-olive-600 hover:bg-pearl-100 px-3 py-2 rounded-md text-base font-medium transition-colors font-body">About</a>
-            <a href="#" class="block text-pearl-800 hover:text-olive-600 hover:bg-pearl-100 px-3 py-2 rounded-md text-base font-medium transition-colors font-body">Contact</a>
+
+    <div x-show="mobileMenuOpen"
+        @click.away="mobileMenuOpen = false"
+        class="fixed inset-0 z-50"
+        style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="flex flex-col bg-white w-64 h-full shadow-2xl border-l border-gray-200 p-4 ml-auto"
+             x-show="mobileMenuOpen"
+             x-transition:enter="transition ease-out duration-500 transform"
+             x-transition:enter-start="translate-x-full"
+             x-transition:enter-end="translate-x-0"
+             x-transition:leave="transition ease-in duration-500 transform"
+             x-transition:leave-start="translate-x-0"
+             x-transition:leave-end="translate-x-full">
             
-            <div class="border-t border-pearl-200 pt-4 mt-4">
-                @auth
-                    <div class="px-3 py-2 text-sm text-pearl-700 border-b border-pearl-100 mb-2 font-body">
-                        Hello, {{ auth()->user()->name }}
-                    </div>
-                    @if(auth()->user()->isAdmin())
-                        <a href="{{ route('admin.dashboard') }}" class="block text-pearl-800 hover:text-olive-600 hover:bg-pearl-100 px-3 py-2 rounded-md text-base font-medium transition-colors font-body">Admin Dashboard</a>
-                    @endif
-                    <form method="POST" action="{{ route('logout') }}" class="mt-1">
-                        @csrf
-                        <button type="submit" class="block w-full text-left text-pearl-800 hover:text-red-600 hover:bg-red-50 px-3 py-2 rounded-md text-base font-medium transition-colors font-body">Logout</button>
-                    </form>
-                {{-- @else
-                    <a href="{{ route('login') }}" class="block text-pearl-800 hover:text-olive-600 hover:bg-pearl-100 px-3 py-2 rounded-md text-base font-medium transition-colors font-body">Login</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="block bg-olive-600 hover:bg-olive-700 text-ivory-50 px-3 py-2 rounded-md text-base font-medium mt-2 transition-colors text-center font-body">Register</a>
-                    @endif --}}
-                @endauth
+            <!-- Top branding section -->
+            <div class="w-full text-center pt-4 pb-4 border-b border-gray-100 mb-6">
+                <h2 class="font-accent text-xl text-pearl-900">{{ config('app.name') }}</h2>
+                <p class="text-xs text-gray-500 mt-1">Natural Bath Salts</p>
+            </div>
+
+            <button @click="mobileMenuOpen = false" class="self-end mb-6">
+                <flux:icon name="chevron-double-right"></flux:icon>
+            </button>
+
+            <!-- Menu items -->
+            <div class="flex flex-col items-center gap-6 flex-1">
+                <div class="flex border border-neutral-700 rounded-xl w-full items-center justify-center">
+                    <flux:icon name="home" class="w-4 h-4"></flux:icon>
+                    <a href="{{ route('home') }}" @click="mobileMenuOpen = false" class="text-pearl-800 hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-body {{ request()->routeIs('home') ? 'text-olive-600 font-semibold bg-pearl-100' : '' }}">{{ __('common.Home') }}</a>
+                </div>
+                <div class="flex border border-neutral-700 rounded-xl w-full items-center justify-center">
+                    <flux:icon name="beaker" class="w-4 h-4"></flux:icon>
+                    <a href="{{ route('about') }}" @click="mobileMenuOpen = false" class="text-pearl-800 hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-body">{{ __('common.About') }}</a>
+                </div>
+                <div class="flex border border-neutral-700 rounded-xl w-full items-center justify-center">
+                    <flux:icon name="building-storefront" class="w-4 h-4"></flux:icon>
+                    <a href="{{ route('contact') }}" @click="mobileMenuOpen = false" class="text-pearl-800 hover:text-olive-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-body">{{ __('common.Contact') }}</a>
+                </div>
+            </div>
+
+            <!-- Language switcher -->
+            <div class="mt-auto mb-4 flex justify-center">
+                <x-language-switcher />
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center text-xs text-gray-400 border-t border-gray-100 pt-4">
+                <p>Premium Bath Products</p>
+                <p class="mt-1">Made with Love</p>
             </div>
         </div>
     </div>
-</nav>
-
-@push('scripts')
-<script>
-    // Mobile menu toggle functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuButton && mobileMenu) {
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-                
-                // Toggle hamburger icon to X when menu is open
-                const svg = mobileMenuButton.querySelector('svg path');
-                if (mobileMenu.classList.contains('hidden')) {
-                    svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-                } else {
-                    svg.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-                }
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
-                    mobileMenu.classList.add('hidden');
-                    const svg = mobileMenuButton.querySelector('svg path');
-                    svg.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-                }
-            });
-        }
-    });
-</script>
-@endpush
