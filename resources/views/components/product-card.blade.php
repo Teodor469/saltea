@@ -17,7 +17,10 @@
     <!-- Product Image -->
     <div class="aspect-square overflow-hidden rounded-2xl mb-4">
         @if($image)
-            <img src="{{ $image }}" alt="{{ $name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <button type="button"
+            @click="modalOpen = true">
+                <img src="{{ $image }}" alt="{{ $name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            </button>
         @else
             <div class="w-full h-full bg-pearl-100 flex items-center justify-center">
                 <span class="text-pearl-400 font-medium font-body text-sm">{{ $name }}</span>
@@ -26,11 +29,11 @@
     </div>
     
     <!-- View Details Button -->
-    <button type="button" 
+    {{-- <button type="button" 
             @click="modalOpen = true"
             class="w-full bg-ivory-50 hover:bg-pearl-100 text-pearl-900 border-2 border-pearl-900 py-3 rounded-xl text-sm font-medium transition-all duration-300 hover:shadow-lg font-body">
         {{ __('common.View Details') }}
-    </button>
+    </button> --}}
 
     <!-- Product Modal -->
     <template x-if="modalOpen">

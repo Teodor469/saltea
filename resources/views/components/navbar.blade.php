@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="bg-ivory-50 shadow-lg border-b border-pearl-200" x-data="{ mobileMenuOpen: false }" @resize.window="if (window.innerWidth >= 768) mobileMenuOpen = false">
+<nav class="bg-ivory-50 shadow-lg border-b border-pearl-200" x-data="{ mobileMenuOpen: false }" @resize.window="if (window.innerWidth >= 768) mobileMenuOpen = false" x-init="$watch('mobileMenuOpen', value => { if (value) document.body.style.overflow = 'hidden'; else document.body.style.overflow = 'auto'; })"
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center h-16">
             <!-- Left side navigation links -->
@@ -61,6 +61,7 @@
     <!-- Mobile menu (hidden by default) -->
 
     <div x-show="mobileMenuOpen"
+        x-cloak
         @click.away="mobileMenuOpen = false"
         class="fixed inset-0 z-50"
         style="background-color: rgba(0, 0, 0, 0.5);">

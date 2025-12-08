@@ -110,7 +110,8 @@
             type="submit"
                 class="border border-neutral-200 dark:border-neutral-600 self-end px-6 py-3 rounded-lg text-yellow-700 dark:text-yellow-100 
             hover:text-yellow-800 dark:hover:text-yellow-300 hover:scale-110 transition-transform">
-                Update
+                <span wire:loading.remove>Update</span>
+                <span wire:loading>Updating...</span>
             </button>
         </div>
     </form>

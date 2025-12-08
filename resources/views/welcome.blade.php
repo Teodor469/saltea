@@ -6,7 +6,7 @@
         <section class="bg-ivory-100 py-16 lg:py-20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
                 <!-- Banner Image positioned closer to content -->
-                <div class="absolute top-0 right-0 w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80">
+                <div class="absolute top-0 right-0 w-48 h-48 sm:w-48 sm:h-481 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96">
                     <img src="{{ asset('images/banners/banner-home-first.png') }}" 
                          alt="Herbal Blends" 
                          class="w-full h-full object-contain opacity-90">
@@ -24,11 +24,11 @@
                                 {{ __('welcome.hero_subtitle') }}
                             </p>
                         </div>
-                        <div>
+                        {{-- <div>
                             <a href="#" class="bg-ivory-50 hover:bg-pearl-100 text-pearl-900 border-2 border-pearl-900 px-8 py-4 rounded-lg text-lg font-semibold inline-block transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-body">
                                 {{ __('welcome.shop_button') }}
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

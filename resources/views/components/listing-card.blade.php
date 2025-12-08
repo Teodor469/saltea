@@ -5,6 +5,7 @@
 {{-- !Right now this component is only for products. Makes me ask myself is it necessary to be a component? --}}
 {{-- ?How to make it so I can reuse the same thing but for the users listing? --}}
 {{-- ?Also need to learn a bit of alpine to make the ingriedients dropdown without user selection --}}
+{{-- TODO Make the mobile view a single a square card with information displayed one under another --}}
 
 <div
     class="w-full bg-white dark:bg-zinc-900 rounded-lg border border-neutral-200 dark:border-neutral-700 p-6 hover:shadow-lg transition-shadow">

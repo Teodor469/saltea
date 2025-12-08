@@ -11,6 +11,9 @@ use Livewire\WithFileUploads;
 
 class EditProduct extends Component
 {
+    // TODO create a form class for update and store. 
+    //!The validation logic for the update is wrong because if required was not present in the html attribute 
+    //!then the user could leave the field empty
     use WithFileUploads, ManageProductArrays;
     public Product $product;
     public $title;
