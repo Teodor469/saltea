@@ -15,7 +15,7 @@
             <div class="flex w-full sm:w-2/3 lg:w-2/4 min-h-[500px] gap-4 p-4 rounded-lg">
                 <form action="" class="flex flex-col w-full justify-center gap-4 items-center">
                     @csrf
-                    <div class="flex flex-col gap-1 w-2/3 px-3 py-2">
+                    <div class="flex flex-col gap-1 w-full sm:w-2/3 px-3 py-2">
                         <label for="" class="text-md sm:text-sm lg:text-lg">{{ __('contact.choose_product') }}</label>
                         <select name="product" id="product" class="border-2 w-full px-3 py-2">
                             {{-- TODO Make that a modal with the list of products and checkboxes --}}
@@ -32,7 +32,7 @@
                         :label="__('contact.first_name') . ' ' . __('contact.required_indicator')"
                         type="text"
                         :placeholder="__('contact.first_name_placeholder')"
-                        containerClass="w-2/3 px-3 py-2"
+                        containerClass="w-full sm:w-2/3 px-3 py-2"
                         class="border-2 px-3 py-2"
                         required
                     />
@@ -40,7 +40,7 @@
                         :label="__('contact.last_name') . ' ' . __('contact.required_indicator')"
                         type="text"
                         :placeholder="__('contact.last_name_placeholder')"
-                        containerClass="w-2/3 px-3 py-2"
+                        containerClass="w-full sm:w-2/3 px-3 py-2"
                         class="border-2 px-3 py-2"
                         required
                     />
@@ -48,7 +48,7 @@
                         :label="__('contact.email') . ' ' . __('contact.required_indicator')"
                         type="email"
                         :placeholder="__('contact.email_placeholder')"
-                        containerClass="w-2/3 px-3 py-2"
+                        containerClass="w-full sm:w-2/3 px-3 py-2"
                         class="border-2 px-3 py-2"
                         required
                     />
@@ -56,7 +56,7 @@
                         :label="__('contact.phone_number') . ' ' . __('contact.required_indicator')"
                         type="tel"
                         :placeholder="__('contact.phone_placeholder')"
-                        containerClass="w-2/3 px-3 py-2"
+                        containerClass="w-full sm:w-2/3 px-3 py-2"
                         class="border-2 px-3 py-2"
                         required
                     />
@@ -64,7 +64,7 @@
                         :label="__('contact.address') . ' ' . __('contact.required_indicator')"
                         type="text"
                         :placeholder="__('contact.address_placeholder')"
-                        containerClass="w-2/3 px-3 py-2"
+                        containerClass="w-full sm:w-2/3 px-3 py-2"
                         class="border-2 px-3 py-2"
                         required
                     />
@@ -75,7 +75,7 @@
                         id="info"
                         rows="2"
                         :placeholder="__('contact.additional_info_placeholder')"
-                        containerClass="w-2/3 px-3 py-2"
+                        containerClass="w-full sm:w-2/3 px-3 py-2"
                         class="border-2 px-3 py-2"
                     />
                     <button type="submit"

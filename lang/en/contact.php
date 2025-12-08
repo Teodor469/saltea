@@ -31,7 +31,4 @@ return [
     
     // Buttons
     'submit_order' => 'Submit Order',
-    
-    // Required indicator
-    'required_indicator' => '*',
 ];

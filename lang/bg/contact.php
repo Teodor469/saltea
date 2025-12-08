@@ -31,7 +31,4 @@ return [
     
     // Buttons
     'submit_order' => 'Изпрати поръчка',
-    
-    // Required indicator
-    'required_indicator' => '*',
 ];
