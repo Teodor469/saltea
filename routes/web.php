@@ -3,6 +3,7 @@
 use App\Livewire\Product\AddProduct;
 use App\Livewire\Product\EditProduct;
 use App\Livewire\AddUser;
+use App\Livewire\Contact\Contact;
 use App\Livewire\Product\ListProduct;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -20,9 +21,7 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::get('/contact', Contact::class)->name('contact');
 
 Route::get('/language/{locale}', function ($locale) {
     Log::debug('Language switch requested', ['locale' => $locale]);
