@@ -24,7 +24,7 @@
 
         <div class="my-6 space-y-4">
             {{-- The listing with all the different buttons bells and whistles --}}
-            <div class="bg-zinc-50 dark:bg-zinc-800 p-4 rounded-lg">
+            <div class="hidden md:block bg-zinc-50 dark:bg-zinc-800 p-4 rounded-lg">
                 <div class="grid grid-cols-12 gap-4 items-center">
                     <div class="col-span-1 text-center">Product</div>
                     <div class="col-span-2 text-center">Title</div>

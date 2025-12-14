@@ -117,7 +117,7 @@ select:focus[data-flux-control] {
 /* Custom Font Utility Classes */
 .font-accent {
     font-family: var(--font-accent);
-    color: var(--color-pink-500); /* Baby pink for Marck Script */
+    color: var(--color-pink-300); /* Baby pink for Marck Script */
 }
 
 .font-info {
