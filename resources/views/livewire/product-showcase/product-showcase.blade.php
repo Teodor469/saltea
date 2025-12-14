@@ -9,6 +9,7 @@
                 :benefits="$product->benefits" 
                 :price="$product->price"
                 :image="isset($product->images[0]) ? asset('storage/' . $product->images[0]) : asset('images/default-product.jpg')"
+                :images="collect($product->images)->map(fn($img) => asset('storage/' . $img))->toArray()"
                 :id="$product->id" />
         @endforeach
     </div>

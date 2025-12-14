@@ -6,14 +6,24 @@
     'benefits' => ['Promotes relaxation', 'Supports digestive health', 'Natural stress relief', 'Caffeine-free'],
     'price' => null,
     'image' => null,
+    'images' => [],
     'id' => null,
     'href' => '#'
 ])
 
-{{-- !Multiple images view is not support create carousel --}}
-{{-- TODO create carousel for multiple images --}}
+{{-- Product card with image carousel support for multiple images --}}
 
-<div x-data="{ modalOpen: false }" class="group">
+<div x-data="{ 
+    modalOpen: false, 
+    currentImageIndex: 0,
+    images: @js(array_filter($images ?: [$image])),
+    nextImage() { 
+        this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length 
+    },
+    prevImage() { 
+        this.currentImageIndex = this.currentImageIndex === 0 ? this.images.length - 1 : this.currentImageIndex - 1 
+    }
+}" class="group">
     <!-- Product Image -->
     <div class="aspect-square overflow-hidden rounded-2xl mb-4">
         @if($image)
@@ -42,15 +52,52 @@
                 
                 <!-- Modal content -->
                 <div class="flex h-full">
-                    <!-- Left side - Image -->
-                    <div class="w-1/2 bg-pearl-100">
-                        @if($image)
-                            <img src="{{ $image }}" alt="{{ $name }}" class="w-full h-full object-cover">
-                        @else
+                    <!-- Left side - Image Carousel -->
+                    <div class="w-1/2 bg-pearl-100 relative">
+                        <template x-if="images.length > 0">
+                            <div class="relative w-full h-full">
+                                <!-- Current Image -->
+                                <img :src="images[currentImageIndex]" :alt="'{{ $name }} - Image ' + (currentImageIndex + 1)" class="w-full h-full object-cover">
+                                
+                                <!-- Navigation buttons (only show if more than 1 image) -->
+                                <template x-if="images.length > 1">
+                                    <div>
+                                        <!-- Previous button -->
+                                        <button @click="prevImage()" 
+                                                class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white rounded-full p-2 transition-all">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                            </svg>
+                                        </button>
+                                        
+                                        <!-- Next button -->
+                                        <button @click="nextImage()" 
+                                                class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white rounded-full p-2 transition-all">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                            </svg>
+                                        </button>
+                                        
+                                        <!-- Image indicators -->
+                                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                                            <template x-for="(image, index) in images" :key="index">
+                                                <button @click="currentImageIndex = index" 
+                                                        :class="currentImageIndex === index ? 'bg-white' : 'bg-white bg-opacity-50'"
+                                                        class="w-3 h-3 rounded-full transition-all">
+                                                </button>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                        
+                        <!-- Fallback when no images -->
+                        <template x-if="images.length === 0">
                             <div class="w-full h-full flex items-center justify-center">
                                 <span class="text-pearl-600 font-medium font-body text-xl">{{ $name }}</span>
                             </div>
-                        @endif
+                        </template>
                     </div>
                     
                     <!-- Right side - Content -->
