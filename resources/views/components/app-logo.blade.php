@@ -1,6 +1,3 @@
-<div class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
-    <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
-</div>
-<div class="ms-1 grid flex-1 text-start text-sm">
-    <span class="mb-0.5 truncate leading-tight font-semibold">Laravel Starter Kit</span>
-</div>
+<a href="{{ route('home') }}" class="text-2xl font-bold hover:opacity-75 transition-opacity font-accent">
+    {{ config('app.name', 'Store') }}
+</a>
