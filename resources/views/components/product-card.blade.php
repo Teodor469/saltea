@@ -117,9 +117,9 @@
                         
                         <div class="mb-6">
                             @if($price)
-                                <span class="text-4xl font-bold text-olive-600 font-info">${{ number_format($price, 2) }}</span>
+                                <span class="text-4xl font-bold text-olive-600 font-info">{{ number_format($price, 2) }}лв.</span>
                             @else
-                                <span class="text-4xl font-bold text-olive-600 font-info">${{ number_format(rand(10, 100), 2) }}</span>
+                                <span class="text-4xl font-bold text-olive-600 font-info">{{ number_format(rand(10, 100), 2) }}лв.</span>
                             @endif
                         </div>
                         
